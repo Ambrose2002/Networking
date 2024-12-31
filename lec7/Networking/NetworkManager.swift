@@ -11,15 +11,13 @@ import Alamofire
 class NetworkManager {
     static let shared = NetworkManager()
     
+    let decoder = JSONDecoder()
+    
     private init () { }
     
+    let endpoint = "https://ios-course-backend.cornellappdev.com/api/members/"
+    
     func fetchRoster(completion: @escaping ([Member]) -> Void) {
-        
-        let endpoint = "https://ios-course-backend.cornellappdev.com/api/members/"
-        
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
         
         AF.request(endpoint, method: .get)
             .validate()
@@ -31,6 +29,26 @@ class NetworkManager {
                     completion(members)
                 case .failure(let error):
                     print("Error in MetworkManager.fetRoster", error)
+                }
+            }
+    }
+    
+    func addToRoster(member: Member, completion: @escaping ((Member) -> Void)) {
+        let parameters: Parameters = [
+            "name": member.name,
+            "subteam": member.subteam,
+            "position": member.position
+        ]
+        
+        AF.request(endpoint, method: .post)
+            .validate()
+            .responseDecodable(of: Member.self, decoder: decoder) { response in
+                switch response.result {
+                case .success(let member):
+                    print("Successfully added \(member.name) to the roster")
+                    completion(member)
+                case .failure(let error):
+                    print("Error in NetworkManager.addToRoster: \(error.localizedDescription)")
                 }
             }
     }
