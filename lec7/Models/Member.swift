@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Member {
+struct Member: Codable {
     let name: String
     let subteam: String
     let position: String
