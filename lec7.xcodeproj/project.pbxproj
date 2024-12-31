@@ -15,6 +15,7 @@
 		2E39E7222AF1E861007D6A53 /* Member.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E39E7212AF1E861007D6A53 /* Member.swift */; };
 		2E39E7242AF1E878007D6A53 /* MemberTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E39E7232AF1E878007D6A53 /* MemberTableViewCell.swift */; };
 		2E39E7272AF1E8A5007D6A53 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 2E39E7262AF1E8A5007D6A53 /* Alamofire */; };
+		AB3361FC2D23934400D81BFD /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB3361FB2D23934400D81BFD /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		2E19D0912AF1E7DB00EFFA73 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E39E7212AF1E861007D6A53 /* Member.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Member.swift; sourceTree = "<group>"; };
 		2E39E7232AF1E878007D6A53 /* MemberTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemberTableViewCell.swift; sourceTree = "<group>"; };
+		AB3361FB2D23934400D81BFD /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +62,7 @@
 		2E19D0822AF1E7D900EFFA73 /* lec7 */ = {
 			isa = PBXGroup;
 			children = (
+				AB3361FA2D2392BB00D81BFD /* Networking */,
 				2E39E71E2AF1E81A007D6A53 /* Controllers */,
 				2E39E71F2AF1E84B007D6A53 /* Models */,
 				2E39E7202AF1E850007D6A53 /* Views */,
@@ -94,6 +97,14 @@
 				2E39E7232AF1E878007D6A53 /* MemberTableViewCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		AB3361FA2D2392BB00D81BFD /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				AB3361FB2D23934400D81BFD /* NetworkManager.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -172,6 +183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB3361FC2D23934400D81BFD /* NetworkManager.swift in Sources */,
 				2E39E7242AF1E878007D6A53 /* MemberTableViewCell.swift in Sources */,
 				2E19D0882AF1E7D900EFFA73 /* ViewController.swift in Sources */,
 				2E19D0842AF1E7D900EFFA73 /* AppDelegate.swift in Sources */,
@@ -320,6 +332,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X749ZC6LL5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lec7/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -346,6 +359,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = X749ZC6LL5;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = lec7/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
