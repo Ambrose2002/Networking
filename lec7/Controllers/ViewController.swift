@@ -13,6 +13,7 @@ class ViewController: UIViewController {
 
     private let addBarButton = UIBarButtonItem()
     private let tableView = UITableView()
+    private let refresh = UIRefreshControl()
 
     // MARK: - Properties (data)
 
@@ -39,10 +40,17 @@ class ViewController: UIViewController {
     // MARK: - Networking
 
     @objc private func addNewMember() {
-        // TODO: Send a POST request to add a new member
+        
+        let newbie = Member(name: "Phillip Jones", subteam: "iOS", position: "Member")
+        
+        NetworkManager.shared.addToRoster(member: newbie) { [weak self] member in
+            guard let self = self else {return}
+            
+            print("\(member.position) \(member.name) was added to the \(member.subteam) subteam")
+        }
     }
     
-    private func fetchRoster() {
+    @objc private func fetchRoster() {
         NetworkManager.shared.fetchRoster { [weak self] members in
             guard let self else {return}
             
@@ -51,6 +59,7 @@ class ViewController: UIViewController {
             //perform UI update on main thread
             DispatchQueue.main.async {
                 self.tableView.reloadData()
+                self.refresh.endRefreshing()
             }
         }
     }
@@ -64,6 +73,8 @@ class ViewController: UIViewController {
 
         view.addSubview(tableView)
         tableView.translatesAutoresizingMaskIntoConstraints = false
+        refresh.addTarget(self, action: #selector(fetchRoster), for: .valueChanged)
+        tableView.refreshControl = refresh
 
         NSLayoutConstraint.activate([
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),

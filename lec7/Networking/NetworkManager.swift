@@ -36,11 +36,11 @@ class NetworkManager {
     func addToRoster(member: Member, completion: @escaping ((Member) -> Void)) {
         let parameters: Parameters = [
             "name": member.name,
-            "subteam": member.subteam,
-            "position": member.position
+            "position": member.position,
+            "subteam": member.subteam
         ]
         
-        AF.request(endpoint, method: .post)
+        AF.request(endpoint, method: .post, parameters: parameters, encoding: JSONEncoding.default)
             .validate()
             .responseDecodable(of: Member.self, decoder: decoder) { response in
                 switch response.result {
